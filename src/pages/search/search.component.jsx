@@ -1,8 +1,12 @@
 import React from 'react';
 import './search.styles.scss';
+
+//components
 import NewsList from '../../components/news-list/news-list.component';
 import SearchField from '../../components/search-field/search-field.component.jsx';
-import fetchGuardianNews from '../../api/guardian.js';
+
+//api
+import { fetchGuardianNews, fetchNytimesNews } from '../../api/fetch.js';
 
 class SearchPage extends React.Component{
 	constructor(){
@@ -18,12 +22,12 @@ class SearchPage extends React.Component{
 	handleApiFetch(){
 		const { searchField } = this.state;
 	
-		Promise.allSettled([ fetchGuardianNews(searchField) ]).then((responses) => {
+		Promise.allSettled([ fetchGuardianNews(searchField), fetchNytimesNews(searchField) ]).then((responses) => {
 			let newsItems = [];
 			responses.forEach(response => {
 				newsItems = newsItems.concat(response.value)
 			});
-
+			
 	      	this.setState({ newsItems: newsItems });
 	 	});
 
