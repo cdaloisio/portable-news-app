@@ -1,5 +1,7 @@
 export const fetchGuardianNews = (searchQuery) => {
-	return fetch(`https://content.guardianapis.com/search?q=${searchQuery}&api-key=6704205c-0ebf-492a-bb46-ee7a5a07b4e4`)
+	//const API_KEY = process.env.REACT_APP_GUARDIAN_API_KEY;
+	const API_KEY = '6704205c-0ebf-492a-bb46-ee7a5a07b4e4';
+	return fetch(`https://content.guardianapis.com/search?q=${searchQuery}&api-key=${API_KEY}`)
       	.then(response => response.json())
       	.then(
       		(result) => { 
@@ -27,7 +29,9 @@ export const fetchGuardianNews = (searchQuery) => {
 }
 
 export const fetchNytimesNews = (searchQuery) => {
-	return fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchQuery}&api-key=UkDK2cbaGJO4Uq8EyXGjkykGuBwCNn6X`)
+	//const API_KEY = process.env.REACT_APP_GUARDIAN_API_KEY;
+	const API_KEY = 'UkDK2cbaGJO4Uq8EyXGjkykGuBwCNn6X';
+	return fetch(`https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchQuery}&api-key=${API_KEY}`)
       	.then(response => response.json())
       	.then(
       		(result) => { 
@@ -45,7 +49,6 @@ export const fetchNytimesNews = (searchQuery) => {
 		      			);
 	      			});
 	      		}
-	      		console.log(result)
       			return items;
        		},
 			(error) => {

@@ -1,0 +1,13 @@
+.bookmarked-container{
+	border-bottom: 1px solid #000;
+		margin-bottom: 50px;
+		padding-bottom: 50px;
+	.bookmarked-list{
+		width: 85vw;
+		margin: 0 auto;
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+		grid-gap: 20px;		
+		text-align: center;
+	}
+}

@@ -3,6 +3,7 @@ import './search.styles.scss';
 
 //components
 import NewsList from '../../components/news-list/news-list.component';
+import BookmarkedList from '../../components/bookmarked/bookmarked-list.component';
 import SearchField from '../../components/search-field/search-field.component.jsx';
 
 //api
@@ -17,6 +18,8 @@ class SearchPage extends React.Component{
 			bookmarkedItems: [],
 			searchField: ""
 		}
+
+		this.handleBookMark = this.handleBookMark.bind(this)
 	}
 
 	handleApiFetch(){
@@ -27,11 +30,9 @@ class SearchPage extends React.Component{
 			responses.forEach(response => {
 				newsItems = newsItems.concat(response.value)
 			});
-			
-	      	this.setState({ newsItems: newsItems });
-	 	});
 
-		
+	      	this.setState({ newsItems: newsItems });
+	 	});		
 	}
 
 	componentDidMount() {
@@ -43,6 +44,13 @@ class SearchPage extends React.Component{
 	        this.handleApiFetch();  
 	    });
 	}
+
+	handleBookMark(item){
+		const bookmarkedItems = this.state.bookmarkedItems;
+		bookmarkedItems.push(item)
+
+		this.setState({bookmarkedItems: bookmarkedItems});
+	}
 	
 	render(){
   		const { newsItems, searchField, bookmarkedItems } = this.state;
@@ -51,7 +59,8 @@ class SearchPage extends React.Component{
 	        <div className="search-page">
 	        	<h1>News App</h1>
 	        	<SearchField placeholder="Search News" handleChange={this.handleChange} />
-	        	<NewsList newsItems={newsItems} />
+	        	<BookmarkedList newsItems={bookmarkedItems} />
+	        	<NewsList newsItems={newsItems} handleBookMark={this.handleBookMark} />
 	        </div>
 	    ); 
   	}
