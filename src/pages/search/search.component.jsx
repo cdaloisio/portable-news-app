@@ -3,7 +3,6 @@ import './search.styles.scss';
 
 //components
 import NewsList from '../../components/news-list/news-list.component';
-import BookmarkedList from '../../components/bookmarked/bookmarked-list.component';
 import SearchField from '../../components/search-field/search-field.component.jsx';
 
 //api
@@ -59,7 +58,7 @@ class SearchPage extends React.Component{
 	        <div className="search-page">
 	        	<h1>News App</h1>
 	        	<SearchField placeholder="Search News" handleChange={this.handleChange} />
-	        	<BookmarkedList newsItems={bookmarkedItems} />
+	        	<NewsList newsItems={bookmarkedItems} title="Bookmarked" />
 	        	<NewsList newsItems={newsItems} handleBookMark={this.handleBookMark} />
 	        </div>
 	    ); 
