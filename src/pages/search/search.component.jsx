@@ -18,10 +18,8 @@ class SearchPage extends React.Component {
     };
 
     this.handleBookMark = this.handleBookMark.bind(this);
-  }
-
-  componentDidMount() {
-    this.handleApiFetch();
+    this.handleChange = this.handleChange.bind(this);
+    this.handleApiFetch = this.handleApiFetch.bind(this);
   }
 
   handleApiFetch() {
@@ -40,9 +38,8 @@ class SearchPage extends React.Component {
   }
 
   handleChange(e) {
-    this.setState({ searchField: e.target.value }, () => {
-      this.handleApiFetch();
-    });
+    this.setState({ searchField: e.target.value });
+    this.handleApiFetch();
   }
 
   handleBookMark(item) {

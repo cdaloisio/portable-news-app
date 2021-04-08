@@ -14,7 +14,13 @@ const NewsList = ({ newsItems, handleBookMark, title }) => (
       {
         newsItems
           ? newsItems.map(
-            (item, index) => <NewsItem key={index} item={item} handleBookMark={handleBookMark} />,
+            (item) => (
+              <NewsItem
+                key={item.title}
+                item={item}
+                handleBookMark={handleBookMark}
+              />
+            ),
           )
           : null
       }
@@ -24,8 +30,13 @@ const NewsList = ({ newsItems, handleBookMark, title }) => (
 
 NewsList.propTypes = {
   newsItems: PropTypes.arrayOf(ItemPropType).isRequired,
-  handleBookMark: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  handleBookMark: PropTypes.func,
+  title: PropTypes.string,
+};
+
+NewsList.defaultProps = {
+  title: '',
+  handleBookMark: () => null,
 };
 
 export default NewsList;

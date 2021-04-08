@@ -39,4 +39,13 @@ NewsItem.propTypes = {
   handleBookMark: PropTypes.func.isRequired,
 };
 
+NewsItem.defaultProps = {
+  item: {
+    title: '',
+    link: '',
+    date: '',
+    newsSource: '',
+  },
+};
+
 export default NewsItem;

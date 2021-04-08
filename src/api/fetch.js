@@ -8,7 +8,7 @@ export const fetchGuardianNews = (searchQuery) => {
         const items = [];
 
         if (result.response.status === 'ok') {
-          result.response.results.each((item) => {
+          result.response.results.forEach((item) => {
             items.push(
               {
                 newsSource: 'The Guardian',
@@ -37,7 +37,7 @@ export const fetchNytimesNews = (searchQuery) => {
         const items = [];
 
         if (result.status === 'OK') {
-          result.response.docs.each((item) => {
+          result.response.docs.forEach((item) => {
             items.push(
               {
                 newsSource: 'NY times',
